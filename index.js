@@ -3,14 +3,14 @@
 var express = require('express'); // 설치한 express module을 불러와서 변수(express)에 담습니다.
 var app = express(); //express를 실행하여 app object를 초기화 합니다.
 
-app.set('view engine','ejs'); // 1
+app.set('view engine','ejs'); // express의 view engine에 ejs를 set하는 코드
 app.use(express.static(__dirname + '/public'));
 
-app.get('/hello', function(req,res){ // 2
+app.get('/hello', function(req,res){ // query를 통해서 이름을 받는 코드입니다. 모든 query들은 req.query에 저장
   res.render('hello', {name:req.query.nameQuery});
 });
 
-app.get('/hello/:nameParam', function(req,res){ // 3
+app.get('/hello/:nameParam', function(req,res){ // route parameter를 통해 이름을 받는 코드
   res.render('hello', {name:req.params.nameParam});
 });
 
